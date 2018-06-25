@@ -8,6 +8,9 @@ namespace WebShop_Mobile.Controllers
 {
     public class HomeController : Controller
     {
+
+        //Linus Branch
+
         public ActionResult Index()
         {
             return View();
