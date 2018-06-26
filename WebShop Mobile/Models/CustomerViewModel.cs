@@ -12,6 +12,10 @@ namespace WebShop_Mobile.Models
         public string UserConnectionId { get; set; }
         public string Email { get; set; }
 
+        public CustomerViewModel()
+        {
+
+        }
         public CustomerViewModel(TestPerson testPerson, ApplicationUser applicationUser)
         {
             Name = testPerson.Name;

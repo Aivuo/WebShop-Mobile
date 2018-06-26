@@ -1,0 +1,11 @@
+﻿@model IEnumerable<WebShop_Mobile.Models.TestProduct>
+
+<h1>All Products</h1>
+
+<div>
+    @foreach (var item in Model)
+    {
+        @Html.Partial("_Products", item)
+    }
+
+</div>

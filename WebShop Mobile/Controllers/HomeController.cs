@@ -51,5 +51,37 @@ namespace WebShop_Mobile.Controllers
 
             return View(model2);
         }
+
+        public ActionResult Edit(int id)
+        {
+            var person = TestDb.TestPeople.First(x => x.Id == id);
+            var user = AppDb.Users.First(x => x.Id == person.UserConnectionId);
+
+            var model = new CustomerViewModel(person, user);
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(CustomerViewModel viewModel)
+        {
+            AppDb.Users.First(x => x.Id == viewModel.UserConnectionId).Email = viewModel.Email;
+            TestDb.TestPeople.First(x => x.Id == viewModel.Id).Name = viewModel.Name;
+
+            AppDb.SaveChanges();
+            TestDb.SaveChanges();
+
+            return RedirectToAction("ShowPeople");
+        }
+
+        public ActionResult GetViewModel()
+        {
+
+            return PartialView();
+        }
+
+
+
     }
 }
