@@ -17,6 +17,7 @@ namespace WebShop_Mobile.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        TestDb TestDb = new TestDb();
 
         public AccountController()
         {
@@ -155,8 +156,11 @@ namespace WebShop_Mobile.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var customer = new TestPerson { Name = model.Name, UserConnectionId = user.Id};
+                    TestDb.TestPeople.Add(customer);
+                    TestDb.SaveChanges();
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
