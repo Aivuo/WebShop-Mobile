@@ -1,6 +1,6 @@
 ﻿@model WebShop_Mobile.Models.TestProduct
 
-    <div>
+    <div id="@Model.Id">
         <h2>@Model.Name</h2>
         <div>
             @Model.Manufacturer <br />
@@ -9,14 +9,14 @@
         </div>
         <h4>@string.Format("Price: {0}kr", Model.Price.ToString("N2"))</h4>
         <div>
-            <h5>Available in:</h5> <br />
+            <h5>Available in:</h5>
             @foreach (var item in Model.Colors)
             {
                 <div>@item</div>
                 @*<label><input type="radio" name="color" value="@item" />@item</label>*@
             }
         </div>
-
+        @Html.ActionLink("Details", "Details", new {id=Model.Id })
         <hr />
 
     </div>

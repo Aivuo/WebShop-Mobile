@@ -12,16 +12,15 @@ namespace WebShop_Mobile.Controllers
         // GET: Product
         public ActionResult Index()
         {
-
-
             return View(_Products);
         }
 
-        //public PartialViewResult Products()
-        //{
+        public ActionResult Details(int id)
+        {
+            var model = _Products.First(x => x.Id == id);
 
-        //    return PartialView(_Products);
-        //}
+            return View(model);
+        }
 
 
         static List<TestProduct> _Products = new List<TestProduct>{

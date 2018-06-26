@@ -1,0 +1,114 @@
+﻿@model WebShop_Mobile.Models.TestProduct
+
+<div>
+    <h4>TestProduct</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScreenResolution)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScreenResolution)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+
+        
+            @if (Model.Stock > 0)
+            {
+                <dd>
+                @Html.DisplayFor(model => model.Stock)
+                </dd>
+            }
+            else
+            {
+                <dd>N/A</dd>
+            }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Retina)
+        </dt>
+        
+        <dd>
+            @if (Model.Retina)
+            {
+                <div>Yes</div>
+            }
+            else
+            {
+                <div>No</div>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CameraMP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CameraMP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductCode)
+        </dd>
+
+        @if (Model.Discontinued)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Discontinued)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Discontinued)
+            </dd>
+
+        }
+
+    </dl>
+</div>
+<p>
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>
