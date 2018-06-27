@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +14,7 @@ namespace WebShop_Mobile.Controllers
 
         TestDb TestDb = new TestDb();
         ApplicationDbContext AppDb = new ApplicationDbContext();
+        
 
         public ActionResult Index()
         {
@@ -20,7 +23,34 @@ namespace WebShop_Mobile.Controllers
 
         public ActionResult About()
         {
+            //ApplicationDbContext context = new ApplicationDbContext();
 
+            //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            //var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
+            //if (!roleManager.RoleExists("Admin"))
+            //{
+            //    var role = new IdentityRole();
+            //    role.Name = "Admin";
+            //    roleManager.Create(role);
+
+            //    //Here we create a Admin super user who will maintain the website                  
+
+            //    var user = new ApplicationUser();
+            //    user.UserName = "Admin@Admin.com";
+            //    user.Email = "Admin@Admin.com";
+
+            //    string userPWD = "password";
+
+            //    var chkUser = UserManager.Create(user, userPWD);
+
+            //    //Add default User to Role Admin   
+            //    if (chkUser.Succeeded)
+            //    {
+            //        var result1 = UserManager.AddToRole(user.Id, "Admin");
+
+            //    }
+            //}
 
             return View();
         }
@@ -52,8 +82,11 @@ namespace WebShop_Mobile.Controllers
             return View(model2);
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
+            if (id == null)
+                return RedirectToAction("Index");
+
             var person = TestDb.TestPeople.First(x => x.Id == id);
             var user = AppDb.Users.First(x => x.Id == person.UserConnectionId);
 

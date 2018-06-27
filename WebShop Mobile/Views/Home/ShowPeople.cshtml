@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<WebShop_Mobile.Models.CustomerViewModel>
 
 @{
-    ViewBag.Title = "ShowPeople";
+    ViewBag.Title = "Show People";
 }
 
 <h2>ShowPeople</h2>
@@ -31,7 +31,7 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
         </td>
     </tr>
 }
