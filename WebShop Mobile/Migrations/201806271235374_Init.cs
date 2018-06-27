@@ -3,7 +3,7 @@ namespace WebShop_Mobile.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class Init : DbMigration
     {
         public override void Up()
         {
@@ -68,21 +68,20 @@ namespace WebShop_Mobile.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         OrderDate = c.String(),
-                        CustomersId = c.Int(nullable: false),
-                        CustomerId_Id = c.Int(),
+                        CustomerId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Customers", t => t.CustomerId_Id)
-                .Index(t => t.CustomerId_Id);
+                .ForeignKey("dbo.Customers", t => t.CustomerId, cascadeDelete: true)
+                .Index(t => t.CustomerId);
             
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.OrderRows", "OrderId", "dbo.Orders");
-            DropForeignKey("dbo.Orders", "CustomerId_Id", "dbo.Customers");
+            DropForeignKey("dbo.Orders", "CustomerId", "dbo.Customers");
             DropForeignKey("dbo.OrderRows", "CellPhoneId", "dbo.CellPhones");
-            DropIndex("dbo.Orders", new[] { "CustomerId_Id" });
+            DropIndex("dbo.Orders", new[] { "CustomerId" });
             DropIndex("dbo.OrderRows", new[] { "CellPhoneId" });
             DropIndex("dbo.OrderRows", new[] { "OrderId" });
             DropTable("dbo.Orders");

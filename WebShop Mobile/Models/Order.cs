@@ -9,8 +9,8 @@ namespace WebShop_Mobile.Models
     {
         public int Id { get; set; }
         public string OrderDate { get; set; }
-        public int CustomersId { get; set; }
-        public Customer CustomerId { get; set; }
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
 
     }
 }
