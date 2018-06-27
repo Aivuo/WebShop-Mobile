@@ -5,13 +5,12 @@ using System.Web;
 
 namespace WebShop_Mobile.Models
 {
-    public class Orders
+    public class Order
     {
         public int Id { get; set; }
         public string OrderDate { get; set; }
-        //public int CustomersId { get; set; }
-
-        public Customers CustomerId { get; set; }
+        public int CustomersId { get; set; }
+        public Customer CustomerId { get; set; }
 
     }
 }

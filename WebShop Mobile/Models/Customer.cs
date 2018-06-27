@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebShop_Mobile.Models
 {
-    public class Customers
+    public class Customer
     {
         public int Id { get; set; }
         public string Firstname { get; set; }
