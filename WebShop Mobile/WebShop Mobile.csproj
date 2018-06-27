@@ -201,9 +201,27 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806261355374_First.cs" />
+    <Compile Include="Migrations\201806261355374_First.Designer.cs">
+      <DependentUpon>201806261355374_First.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806270829217_Second.cs" />
+    <Compile Include="Migrations\201806270829217_Second.Designer.cs">
+      <DependentUpon>201806270829217_Second.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806270834349_Three.cs" />
+    <Compile Include="Migrations\201806270834349_Three.Designer.cs">
+      <DependentUpon>201806270834349_Three.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CellPhones.cs" />
+    <Compile Include="Models\Customers.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OrderRows.cs" />
+    <Compile Include="Models\Orders.cs" />
+    <Compile Include="Models\WebShopMobileDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -283,6 +301,17 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201806261355374_First.resx">
+      <DependentUpon>201806261355374_First.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806270829217_Second.resx">
+      <DependentUpon>201806270829217_Second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806270834349_Three.resx">
+      <DependentUpon>201806270834349_Three.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -297,7 +326,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53139</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
