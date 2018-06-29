@@ -1,0 +1,19 @@
+﻿@model IEnumerable<WebShop_Mobile.Models.CellPhone>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    @foreach (var item in Model)
+    {
+        if (item.Discontinued == false)
+        {
+            @Html.Partial("_Product", item)
+        }
+    }
+
+</div>
+
