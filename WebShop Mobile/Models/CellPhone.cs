@@ -11,7 +11,7 @@ namespace WebShop_Mobile.Models
         public string Name { get; set; }
         public string ReleaseYear { get; set; }
         public float Price { get; set; }
-        public string Colors { get; set; }
+        public List<Color> Colors { get; set; }
         public Boolean Retina { get; set; }
         public int WarehouseStock { get; set; }
         public Boolean News { get; set; }
@@ -19,6 +19,23 @@ namespace WebShop_Mobile.Models
         public string CameraPixels { get; set; }
         public string Developer { get; set; }
         public Boolean Discontinued { get; set; }
+
+        public CellPhone()
+        {
+            Colors = new List<Color>();
+        }
+        public enum Color
+        {
+            Red,
+            Blue,
+            Green,
+            Yellow,
+            Purple,
+            Pink,
+            Silver,
+            Gold,
+            Obsidian
+        }
 
 
     }
