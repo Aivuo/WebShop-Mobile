@@ -23,7 +23,7 @@ namespace WebShop_Mobile.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("WebshopMobileDb", throwIfV1Schema: false)
         {
         }
 
