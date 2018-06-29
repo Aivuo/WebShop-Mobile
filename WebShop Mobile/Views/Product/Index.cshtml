@@ -1,0 +1,14 @@
+﻿@model IEnumerable<WebShop_Mobile.Models.TestProduct>
+
+<h1>Shop a new Phone</h1>
+
+<div>
+    @foreach (var item in Model)
+    {
+        if (item.Discontinued == false)
+        {
+            @Html.Partial("_Products", item)
+        }
+    }
+
+</div>

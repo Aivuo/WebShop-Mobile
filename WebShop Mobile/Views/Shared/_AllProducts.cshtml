@@ -1,0 +1,16 @@
+﻿@model WebShop_Mobile.Models.TestProduct
+
+    <div id="@Model.Id">
+        <h3>@Model.Name</h3>
+        <div>
+            @Model.Manufacturer <br />
+            @Model.ProductCode <br />
+            @Model.ReleaseYear <br />
+        </div>
+        <h4>@string.Format("Price: {0}kr", Model.Price.ToString("N2"))</h4>
+      
+        @Html.ActionLink("Details", "Details", new {id=Model.Id })
+        @Html.ActionLink("Edit", "Edit", new { id=Model.Id})
+        <hr />
+
+    </div>
