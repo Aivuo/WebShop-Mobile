@@ -22,9 +22,6 @@
             @Html.TextBoxFor(m => m.ConfirmEmail, new { @class = "form-control" })
         </div>
     </div>
-    @*<div class="form-group">
-
-    </div>*@
  //-----------------------------------------------------------------------------------------------------
     <div class="form-group">
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
@@ -36,52 +33,62 @@
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
-    @*<div class="form-group">
-
-    </div>*@
+ //----------------------------------------------------------------------------------------------------
+     <div class="form-group">
+        @Html.LabelFor(m => m.Firstname, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Firstname, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Lastname, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Lastname, new { @class = "form-control" })
+        </div>
+    </div>
  //----------------------------------------------------------------------------------------------------
     <div class="form-group">
         @Html.LabelFor(m => m.BillingAdress, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.BillingAdress, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.BillingAdress, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.BillingCity, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.BillingCity, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.BillingCity, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.BillingZip, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.BillingZip, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.BillingZip, new { @class = "form-control" })
         </div>
     </div>
  //---------------------------------------------------------------------------------------------------
     <div class="form-group">
         @Html.LabelFor(m => m.DeliveryAdress, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.DeliveryAdress, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.DeliveryAdress, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.DeliveryCity, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.DeliveryCity, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.DeliveryCity, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.DeliveryZip, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.DeliveryZip, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.DeliveryZip, new { @class = "form-control" })
         </div>
     </div>
  //--------------------------------------------------------------------------------------------------
     <div class="form-group">
         @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.PhoneNumber, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
         </div>
     </div>
  //--------------------------------------------------------------------------------------------------

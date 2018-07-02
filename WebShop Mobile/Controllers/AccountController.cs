@@ -155,7 +155,25 @@ namespace WebShop_Mobile.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var customer = new Customer
+                    {
+                        Firstname = model.Firstname,
+                        Lastname = model.Lastname,
+
+                        BillingAdress = model.BillingAdress,
+                        BillingCity = model.BillingCity,
+                        BillingZip = model.BillingZip,
+
+                        DeliveryAdress = model.DeliveryAdress,
+                        DeliveryCity = model.DeliveryCity,
+                        DeliveryZip = model.DeliveryZip,
+
+                        EmailAdress = model.Email,
+                        PhoneNumber = model.PhoneNumber
+                    };
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

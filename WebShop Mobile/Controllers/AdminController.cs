@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,12 +9,12 @@ using WebShop_Mobile.Models;
 
 namespace WebShop_Mobile.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
-
         private WebShopMobileDb Db = new WebShopMobileDb();
         private ApplicationDbContext AppDb = new ApplicationDbContext();
-        // GET: Admin
+
         public ActionResult Index()
         {
             return View();
@@ -23,6 +25,36 @@ namespace WebShop_Mobile.Controllers
             var model = Db.CellPhones.ToList();
 
             return View(model);
+        }
+
+        public ActionResult AllUsers()
+        {
+            var users = AppDb.Users.ToList();
+            var customers = Db.Customers.ToList();
+
+            var model = new List<userViewModel>();
+
+            foreach (var item in users)
+            {
+                var customer = customers.First(x => x.EmailAdress == item.Email);
+                model.Add(new userViewModel(item, customer));
+            }
+
+            return View(model);
+        }
+
+        public ActionResult AddAdmin(string id)
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(AppDb));
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(AppDb));
+
+            var model = AppDb.Users.First(x => x.Id == id);
+
+            var check = UserManager.AddToRole(model.Id, "Admin");
+
+            AppDb.SaveChanges();
+
+            return RedirectToAction("AllUsers");
         }
 
         public ActionResult Create()
