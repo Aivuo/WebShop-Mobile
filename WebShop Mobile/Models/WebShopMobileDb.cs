@@ -10,6 +10,8 @@ namespace WebShop_Mobile.Models
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class WebShopMobileDb : DbContext
     {
+        public WebShopMobileDb() : base("name=WebshopMobileDb") { }
+        
         
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CellPhone> CellPhones { get; set; }

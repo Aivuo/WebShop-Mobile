@@ -22,11 +22,11 @@ namespace WebShop_Mobile
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
-            if (!roleManager.RoleExists("Admin"))
+            if (roleManager.RoleExists("Admin"))
             {
-                var role = new IdentityRole();
-                role.Name = "Admin";
-                roleManager.Create(role);
+                //var role = new IdentityRole();
+                //role.Name = "Admin";
+                //roleManager.Create(role);
 
                 //Here we create a Admin super user who will maintain the website                  
 
