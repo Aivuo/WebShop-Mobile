@@ -22,7 +22,7 @@ namespace WebShop_Mobile.Controllers
 
         public ActionResult AllProducts()
         {
-            var model = Db.CellPhones.ToList();
+            var model = Db.CellPhones.OrderBy(x => x.Developer).ThenBy(x => x.Name).ToList();
 
             return View(model);
         }
@@ -70,13 +70,13 @@ namespace WebShop_Mobile.Controllers
 
             Db.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Product", null);
         }
 
         public ActionResult Edit(int? id)
         {
             if (id == null)
-                return RedirectToAction("Index");
+                return RedirectToAction("AllProducts");
 
             var model = Db.CellPhones.First(x => x.Id == id);
 
@@ -102,7 +102,7 @@ namespace WebShop_Mobile.Controllers
 
             Db.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("AllProducts");
         }
 
         public ActionResult Delete(int? id)

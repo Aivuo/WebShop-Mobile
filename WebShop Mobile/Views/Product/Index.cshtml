@@ -1,19 +1,26 @@
 ﻿@model IEnumerable<WebShop_Mobile.Models.CellPhone>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Product List";
+    var i = 0;
 }
 
-<h2>Index</h2>
+<div class="col-md-12"><hr /></div>
 
-<div>
+<div class="row" id="ProductList">
     @foreach (var item in Model)
     {
         if (item.Discontinued == false)
         {
             @Html.Partial("_Product", item)
+            i++;
+        }
+        if (i == 4)
+        {
+            <div class="col-md-12"><hr /></div>
+            i = 0;
         }
     }
-
 </div>
+
 

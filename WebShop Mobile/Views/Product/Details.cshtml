@@ -2,22 +2,19 @@
 
 @{
     ViewBag.Title = "Details";
+
+    var image = Model.ProductCode;
+    image.TrimEnd('+', ' ');
+    image += ".jpg";
 }
 
 <h2>Details</h2>
 
 <div>
-    <h4>CellPhone</h4>
+    <h4>@Model.Name</h4>
     <hr />
+    <img class="img-responsive" src="~/Content/Img/@image" alt="@Model.Name" width="400"/>
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.ReleaseYear)
         </dt>

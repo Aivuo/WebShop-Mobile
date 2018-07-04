@@ -2,14 +2,21 @@
 
 @{
     ViewBag.Title = "All Products";
+    var i = 0;
 }
 
 <h2>All Products</h2>
 
-<div>
+<div class="row">
     @foreach (var item in Model)
     {
-            @Html.Partial("_AllProducts", item)
+        @Html.Partial("_AllProducts", item)
+        i++;
+        if (i == 2)
+        {
+            <div class="col-md-12"><hr /></div>
+            i = 0;
+        }
     }
 
 </div>
