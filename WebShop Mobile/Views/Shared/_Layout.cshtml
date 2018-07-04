@@ -82,6 +82,16 @@
                }, new { @class = "navbar-text" })
                     @*</a>*@
                 </li>
+                <li class="nav-item">
+                    @*<a class="nav-link">*@
+                    @Ajax.ActionLink("Kundvagn", "Index", "Home", new AjaxOptions
+               {
+                   UpdateTargetId = "MainBody",
+                   HttpMethod = "get",
+                   InsertionMode = InsertionMode.Replace
+               }, new { @class = "navbar-text" })
+                    @*</a>*@
+                </li>
             </ul>
         </div>
     </nav>
