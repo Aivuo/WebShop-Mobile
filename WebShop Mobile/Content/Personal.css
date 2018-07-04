@@ -25,7 +25,7 @@
         float: none;
     }
 
-#loginLink {
+#loginLink, registerLink, loginRegisterLink {
     color: white;
     font-size: medium;
 }
@@ -65,4 +65,7 @@ textarea {
 }
 #SearchInput, SearchButton {
     display:inline;
+}
+.btn-primary {
+    color: white;
 }
