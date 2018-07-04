@@ -7,10 +7,10 @@
 }
 
 <a href="/Product/Details/@Model.Id">
-    <div class="col-md-offset-1 col-md-2" id="@Model.Name">
+    <div class="col-md-offset-1 col-md-2" id="@Model.Name" style="width:100%">
         <div class="bg-primary" style="font-size:24px" >@Model.Name</div>
     
-            <img class="img-thumbnail img-responsive" src="~/Content/Img/@image" alt="@Model.Name" />
+            <img class="img-thumbnail img-responsive" src="~/Content/Img/@image" alt="@Model.Name" />  @*style="width:400px"*@
     
         <div class="bg-primary">@string.Format("Price: {0}kr", Model.Price.ToString("N2"))</div>
     </div>

@@ -4,10 +4,12 @@
     ViewBag.Title = "Product List";
     var i = 0;
 }
+<div class="row">
+    @*<div class="col-md-12"><hr /></div>*@
+    <hr />
+</div>
 
-<div class="col-md-12"><hr /></div>
-
-<div class="row" id="ProductList">
+<div class="row" id="ProductList" style="display:block">
     @foreach (var item in Model)
     {
         if (item.Discontinued == false)
