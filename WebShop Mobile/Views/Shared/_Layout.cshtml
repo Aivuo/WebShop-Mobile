@@ -9,33 +9,90 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3" id="Title">
+                @Ajax.ActionLink("ShopMobile", "Index", "Home", new AjaxOptions {
+               UpdateTargetId = "MainBody", HttpMethod = "get", InsertionMode = InsertionMode.Replace },
+                     new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+            @*<div class="col-xs-5">
+        <div class="row">*@
+            <div class=" col-xs-5" id="AjaxForm">
+                @using (Ajax.BeginForm(new AjaxOptions
+                {
+                    UpdateTargetId = "MainBody",
+                    HttpMethod = "get",
+                    InsertionMode = InsertionMode.Replace
+                }))
+                {
+                    <input class="form-control col-xs-3" id="SearchInput" type="text" placeholder="Sök..." />
+                    <button class="btn btn-primary" id="SearchButton" type="submit">Sök</button>
+                }
             </div>
+            @*</div>
+        </div>*@
+
+            @*<div class="col-xs-1"></div>*@
+            @Html.Partial("_LoginPartial")
+
         </div>
     </div>
-    <div class="container body-content">
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary ">
+        <div class="collapse navbar-collapse ">
+            <ul class="navbar-nav container justify-content-center">
+                <li class="nav-item active ">
+                    @*<a class="nav-link">*@
+                    @Ajax.ActionLink("Hem", "Index", "Home", new AjaxOptions
+               {
+                   UpdateTargetId = "MainBody",
+                   HttpMethod = "get",
+                   InsertionMode = InsertionMode.Replace
+               }, new { @class = "navbar-text" })
+                    @*</a>*@
+                </li>
+                <li class="nav-item">
+                    @*<a class="nav-link">*@
+                    @Ajax.ActionLink("Kategorier", "Index", "Home", new AjaxOptions
+               {
+                   UpdateTargetId = "MainBody",
+                   HttpMethod = "get",
+                   InsertionMode = InsertionMode.Replace
+               }, new { @class = "navbar-text" })
+                    @*</a>*@
+                </li>
+                <li class="nav-item">
+                    @*<a class="nav-link">*@
+                    @Ajax.ActionLink("Om oss", "About", "Home", new AjaxOptions
+               {
+                   UpdateTargetId = "MainBody",
+                   HttpMethod = "get",
+                   InsertionMode = InsertionMode.Replace
+               }, new { @class = "navbar-text" })
+                    @*</a>*@
+                </li>
+                <li class="nav-item">
+                    @*<a class="nav-link">*@
+                    @Ajax.ActionLink("Kontakta oss", "Contact", "Home", new AjaxOptions
+               {
+                   UpdateTargetId = "MainBody",
+                   HttpMethod = "get",
+                   InsertionMode = InsertionMode.Replace
+               }, new { @class = "navbar-text" })
+                    @*</a>*@
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="MainBody" class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
+    <footer class="text-sm-center">
+        <p>&copy; @DateTime.Now.Year - ShopMobile</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
