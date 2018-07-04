@@ -7,10 +7,11 @@
 
 .navbar-brand {
     font-size:xx-large;
+    margin-top: -10px;
 }
 
 .navbar {
-    font-size: medium;
+    font-size: large;
     text-align: center;
 }
 
