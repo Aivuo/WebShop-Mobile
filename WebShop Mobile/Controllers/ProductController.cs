@@ -14,9 +14,38 @@ namespace WebShop_Mobile.Controllers
         private ApplicationDbContext AppDb = new ApplicationDbContext();
 
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(params string[] Developers)
         {
-            var model = Db.CellPhones.Where(x => x.Discontinued != true).ToList();
+            List<CellPhone> model = new List<CellPhone>();
+
+            if (Developers != null)
+            {
+                var cellPhones = Db.CellPhones.Where(x => x.Discontinued != true).ToList();
+                foreach (var item in Developers)
+                {
+                    var temp = cellPhones.Where(x => x.Developer == item).ToList();
+                    foreach (var item2 in temp)
+                    {
+                        model.Add(item2);
+                    }
+                }
+
+                model.OrderBy(x => x.Developer)
+                     .ThenBy(x => x.Name);
+            }
+            else
+            {
+                model = Db.CellPhones.Where(x => x.Discontinued != true)
+                                     .OrderBy(x => x.Developer)
+                                     .ThenBy(x => x.Name).ToList();
+            }
+
+            
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_Product", model);
+            }
 
             return View(model);
         }
