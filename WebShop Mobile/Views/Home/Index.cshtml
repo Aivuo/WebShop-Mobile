@@ -1,6 +1,21 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@*@model WebShop_Mobile.Models.CellPhone
+
+@foreach(var item in Model)
+{
+    if(Model.News is true)
+    {
+        ViewBag.Title = Model.Name;
+
+        Ajax.ActionLink(ViewBag.Title, ViewBag.Title, "Home", new AjaxOptions
+        {
+            UpdateTargetId = "MainBody",
+            HttpMethod = "get",
+            InsertionMode = InsertionMode.Replace
+        });
+    }
+}*@
+
+
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>

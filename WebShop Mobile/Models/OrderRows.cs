@@ -14,6 +14,6 @@ namespace WebShop_Mobile.Models
         public string Date { get; set; }
         public string Cellphone { get; set; }
         public int CellphoneId { get; set; }
-        public Cellphone Cellphone { get; set; }
+        public CellPhone CellPhone { get; set; }
     }
 }

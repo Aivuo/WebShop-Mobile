@@ -1,0 +1,69 @@
+﻿body {
+    font-size:medium;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    /*height:839px;*/
+}
+.navbar-brand {
+    font-size:xx-large;
+}
+.navbar {
+    font-size:medium;
+    /*display:inline;*/
+    text-align:center;
+}
+.navbar-nav {
+    text-align: center;
+    float:none;
+}
+    .navbar-nav li {
+        display: inline-block;
+        float: none;
+    }
+ul {
+    /*display: inline-block;
+    float: none;*/
+}
+#loginLink {
+    color: white;
+    font-size: medium;
+}
+#registerLink {
+    color: white;
+    font-size: medium;
+}
+#Title {
+    padding-bottom: 5px;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+/*body {
+    padding-top: 20px;
+}*/
+/*{
+    id = "loginLink"
+}
+
+)</div >
+new {
+    id = "registerLink"
+}
+
+)</div >*/

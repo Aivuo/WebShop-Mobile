@@ -10,6 +10,10 @@ namespace WebShop_Mobile.Controllers
     {
         public ActionResult Index()
         {
+            if(Request.IsAjaxRequest())
+            {
+                return PartialView("Index");
+            }
             return View();
         }
 
