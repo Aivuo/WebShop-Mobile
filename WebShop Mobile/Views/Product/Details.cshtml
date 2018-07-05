@@ -112,6 +112,9 @@
 </div>
 <br />
 <p>
-    @Html.ActionLink("Edit", "Edit","Admin", new { id = Model.Id }, null) |
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Edit", "Edit","Admin", new { id = Model.Id }, null) <span> | </span>
+    }
     @Html.ActionLink("Back to List", "Index")
 </p>

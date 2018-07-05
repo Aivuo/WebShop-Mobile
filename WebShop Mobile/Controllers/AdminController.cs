@@ -22,7 +22,8 @@ namespace WebShop_Mobile.Controllers
 
         public ActionResult AllProducts()
         {
-            var model = Db.CellPhones.OrderBy(x => x.Developer).ThenBy(x => x.Name).ToList();
+            var model = Db.CellPhones.OrderBy(x => x.Developer)
+                                     .ThenBy(x => x.Name).ToList();
 
             return View(model);
         }

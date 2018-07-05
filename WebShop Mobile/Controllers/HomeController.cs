@@ -26,8 +26,6 @@ namespace WebShop_Mobile.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
-            ApplicationDbContext.Create();
-
             return View();
         }
     }
