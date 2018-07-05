@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Categories";
+}
+
+<h2>Categories</h2>
+
+<div class="row" id="CategoryList">
+
+    <a href="~/Product/CategoriesResult?Category=Developers" class="col-md-offset-1 col-md-3">
+        <div >
+            <img src="~/Content/Img/manufacturers.png" class="img-thumbnail img-responsive" alt="Tillverkare"/>
+            <div class="bg-primary">Tillverkare</div>
+        </div>
+    </a>
+
+    <a href="~/Product/CategoriesResult?Category=ReleaseYear" class="col-md-offset-1 col-md-3">
+        <div >
+            <img src="~/Content/Img/manufacturers.png" class="img-thumbnail img-responsive" alt="Utgivningsår"/>
+            <div class="bg-primary">Utgivningsår</div>
+        </div>
+    </a>
+
+
+    @*@using (Ajax.ActionLink("Developers", new AjaxOptions
+        {
+            HttpMethod = "post",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "CategoryList"
+        }))
+        {
+            <div class="col-md-offset-1 col-md-2">
+                <img src="~/Content/Img/manufacturers.png" class="img-thumbnail img-responsive" alt="Tillverkare" />
+                <div class="bg-primary">Tillverkare</div>
+            </div>
+
+        }*@
+
+
+
+
+</div>
+
