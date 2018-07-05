@@ -304,6 +304,11 @@
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Admin\AllUsers%28old%29.cshtml" />
     <Content Include="Views\Admin\AllUsers.cshtml" />
+    <Content Include="Views\Product\Categories.cshtml" />
+    <Content Include="Views\Shared\_Developers.cshtml" />
+    <Content Include="Views\Product\Developers.cshtml" />
+    <Content Include="Views\Product\ReleaseYear.cshtml" />
+    <Content Include="Views\Product\CategoriesResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

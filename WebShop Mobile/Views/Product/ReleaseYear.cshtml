@@ -1,0 +1,25 @@
+﻿@model IEnumerable<string>
+@{
+    ViewBag.Title = "ReleaseYear";
+    var i = 0;
+}
+
+<h2>ReleaseYear</h2>
+
+@foreach (var item in Model)
+{
+    var image = item + ".jpg";
+
+    <a href="/Product/Index?ReleaseYear=@item">
+        <div class="col-md-offset-1 col-md-2">
+            <img src="~/Content/Img/ReleaseYear/@image" class="img-thumbnail img-responsive" alt="@item" />
+            <div class="bg-primary">@item</div>
+        </div>
+    </a>
+
+    i++;
+    if (i == 4)
+    {
+        <div class="col-md-12"><hr /></div>
+    }
+}

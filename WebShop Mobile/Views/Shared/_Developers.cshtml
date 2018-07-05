@@ -1,0 +1,17 @@
+﻿
+<div class="row" id="DeveloperList">
+    @Ajax.ActionLink("Apple", "Index",new {Developers="Apple" }, new AjaxOptions
+{
+    HttpMethod = "post",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "CategoryList"
+})
+    {
+        <div class="col-md-offset-1 col-md-2">
+            <img src="~/Content/Img/HUGMNIA.jpg" class="img-thumbnail img-responsive" alt="Tillverkare" />
+            <div class="bg-primary">Apple</div>
+        </div>
+    }
+
+
+</div>
