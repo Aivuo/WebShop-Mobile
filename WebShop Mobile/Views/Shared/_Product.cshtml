@@ -1,37 +1,50 @@
-﻿@model WebShop_Mobile.Models.CellPhone
+﻿@model IEnumerable<WebShop_Mobile.Models.CellPhone>
 
-@{ 
-    var image = Model.ProductCode;
-    image.TrimEnd('+', ' ');
-    image += ".jpg";
+@{
+    var i = 0;
 }
 
-<a href="/Product/Details/@Model.Id">
-    <div class="col-md-offset-1 col-md-2" id="@Model.Name" style="width:100%">
-        <div class="bg-primary" style="font-size:24px" >@Model.Name</div>
-    
-            <img class="img-thumbnail img-responsive" src="~/Content/Img/@image" alt="@Model.Name" />  @*style="width:400px"*@
-    
-        <div class="bg-primary">@string.Format("Price: {0}kr", Model.Price.ToString("N2"))</div>
-    </div>
-</a>
 
-    @*<div id="@Model.Id">
-        <h2>@Model.Name</h2>
-        <div>
-            @Model.Developer <br />
-            @Model.ProductCode <br />
-            @Model.ReleaseYear <br />
+@foreach (var item in Model)
+{
+    var image = item.ProductCode;
+    image.TrimEnd('+', ' ');
+    image += ".jpg";
+
+
+    <a href="/Product/Details/@item.Id">
+        <div class="col-md-offset-1 col-md-2" id="@item.Name" style="width:100%">
+            <div class="bg-primary" style="font-size:24px">@item.Name</div>
+
+            <img class="img-thumbnail img-responsive" src="~/Content/Img/@image" alt="@item.Name" />  @*style="width:400px"*@
+
+            <div class="bg-primary">@string.Format("Price: {0}kr", item.Price.ToString("N2"))</div>
         </div>
-        <h4>@string.Format("Price: {0}kr", Model.Price.ToString("N2"))</h4>
-        <div>
-            <h5>Available in:</h5>
-            @foreach (var item in Model.Colors)
-            {
-                <div>@item</div>
-                <label><input type="radio" name="color" value="@item" />@item</label>
-            }
-        </div>
-        @Html.ActionLink("Details", "Details", new {id=Model.Id })
-        <hr />
-   </div>*@
+    </a>
+
+    i++;
+    if (i == 4)
+    {
+        <div class="col-md-12"><hr /></div>
+        i = 0;
+    }
+}
+@*<div id="@Model.Id">
+         <h2>@Model.Name</h2>
+         <div>
+             @Model.Developer <br />
+             @Model.ProductCode <br />
+             @Model.ReleaseYear <br />
+         </div>
+         <h4>@string.Format("Price: {0}kr", Model.Price.ToString("N2"))</h4>
+         <div>
+             <h5>Available in:</h5>
+             @foreach (var item in Model.Colors)
+             {
+                 <div>@item</div>
+                 <label><input type="radio" name="color" value="@item" />@item</label>
+             }
+         </div>
+         @Html.ActionLink("Details", "Details", new {id=Model.Id })
+         <hr />
+    </div>*@
