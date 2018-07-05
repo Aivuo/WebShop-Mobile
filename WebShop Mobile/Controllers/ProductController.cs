@@ -78,7 +78,8 @@ namespace WebShop_Mobile.Controllers
 
             if (Category == "Developers")
             {
-                var developers = Db.CellPhones.Select(x => x.Developer).Distinct().ToList();
+                var developers = Db.CellPhones.Select(x => x.Developer)
+                                              .Distinct().ToList();
                 foreach (var item in developers)
                 {
                     model.Add(item);
@@ -88,7 +89,9 @@ namespace WebShop_Mobile.Controllers
             }
             else
             {
-                var releaseYears = Db.CellPhones.Select(x => x.ReleaseYear).Distinct().ToList();
+                var releaseYears = Db.CellPhones.Select(x => x.ReleaseYear)
+                                                .Distinct().ToList();
+
                 foreach (var item in releaseYears)
                 {
                     model.Add(item);
@@ -103,20 +106,6 @@ namespace WebShop_Mobile.Controllers
             return View(model);
         }
 
-        public ActionResult Developers()
-        {
-            var model = Db.CellPhones.Select(x => x.Developer).Distinct().ToList();
-
-            return View(model);
-        }
-
-        public ActionResult ReleaseYear()
-        {
-            var model = Db.CellPhones.Select(x => x.ReleaseYear).Distinct().ToList();
-
-            return View(model);
-        }
-
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -126,5 +115,29 @@ namespace WebShop_Mobile.Controllers
 
             return View(model);
         }
+
+        public ActionResult Developers()
+        {
+            var model = Db.CellPhones.Select(x => x.Developer)
+                                     .Distinct().ToList();
+
+            return View(model);
+        }
+
+        public ActionResult AddToBasket()
+        {
+
+            return View(); //Måste ändras
+        }
+
+        public ActionResult ReleaseYear()
+        {
+            var model = Db.CellPhones.Select(x => x.ReleaseYear)
+                                     .Distinct().ToList();
+
+            return View(model);
+        }
+
+
     }
 }

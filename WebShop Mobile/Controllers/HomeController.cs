@@ -22,12 +22,9 @@ namespace WebShop_Mobile.Controllers
             return View();
         }
 
-        [Authorize(Roles ="Admin")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
-            ApplicationDbContext.Create();
 
             return View();
         }

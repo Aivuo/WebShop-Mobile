@@ -56,6 +56,8 @@ namespace WebShop_Mobile.Models
                 DeliveryCity = customer.DeliveryCity;
                 DeliveryZip = customer.DeliveryZip;
 
+                PhoneNumber = customer.PhoneNumber;
+
                 Orders = new List<Order>();
 
                 foreach (var item in customer.Orders)
