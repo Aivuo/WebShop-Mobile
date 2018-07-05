@@ -36,7 +36,7 @@ namespace WebShop_Mobile.Controllers
 
             foreach (var item in users)
             {
-                var customer = customers.First(x => x.EmailAdress == item.Email);
+                var customer = customers.FirstOrDefault(x => x.EmailAdress == item.Email);
                 model.Add(new userViewModel(item, customer));
             }
 

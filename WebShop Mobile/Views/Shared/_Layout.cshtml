@@ -44,7 +44,7 @@
             <ul class="navbar-nav container justify-content-center">
                 <li class="nav-item active ">
                     @*<a class="nav-link">*@
-                    @Ajax.ActionLink("Hem", "Index", "Home", new AjaxOptions
+                    @Ajax.ActionLink("Hem", "Index", "Home", null, new AjaxOptions
                {
                    UpdateTargetId = "MainBody",
                    HttpMethod = "get",
@@ -54,7 +54,7 @@
                 </li>
                 <li class="nav-item">
                     @*<a class="nav-link">*@
-                    @Ajax.ActionLink("Kategorier", "Index", "Home", new AjaxOptions
+                    @Ajax.ActionLink("Kategorier", "Categories", "Product", null, new AjaxOptions
                {
                    UpdateTargetId = "MainBody",
                    HttpMethod = "get",
@@ -64,7 +64,7 @@
                 </li>
                 <li class="nav-item">
                     @*<a class="nav-link">*@
-                    @Ajax.ActionLink("Om oss", "About", "Home", new AjaxOptions
+                    @Ajax.ActionLink("Om oss", "About", "Home", null, new AjaxOptions
                {
                    UpdateTargetId = "MainBody",
                    HttpMethod = "get",
@@ -74,7 +74,7 @@
                 </li>
                 <li class="nav-item">
                     @*<a class="nav-link">*@
-                    @Ajax.ActionLink("Kontakta oss", "Contact", "Home", new AjaxOptions
+                    @Ajax.ActionLink("Kontakta oss", "Contact", "Home", null, new AjaxOptions
                {
                    UpdateTargetId = "MainBody",
                    HttpMethod = "get",

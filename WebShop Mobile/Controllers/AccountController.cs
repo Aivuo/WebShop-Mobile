@@ -172,6 +172,11 @@ namespace WebShop_Mobile.Controllers
                         PhoneNumber = model.PhoneNumber
                     };
 
+                    WebShopMobileDb Db = new WebShopMobileDb();
+
+                    Db.Customers.Add(customer);
+                    Db.SaveChanges();
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     
