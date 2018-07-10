@@ -29,6 +29,7 @@ namespace WebShop_Mobile.Controllers
             return View(model);
         }
 
+        [Authorize]
         public ActionResult AddToCart(int cellId)
         {
             var user2 = User.Identity.Name;
