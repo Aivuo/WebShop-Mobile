@@ -219,12 +219,17 @@
     <Compile Include="Migrations\201806290816187_Init.Designer.cs">
       <DependentUpon>201806290816187_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807100738113_ProcessOrder.cs" />
+    <Compile Include="Migrations\201807100738113_ProcessOrder.Designer.cs">
+      <DependentUpon>201807100738113_ProcessOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CellPhone.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Methods.cs" />
     <Compile Include="Models\OrderRow.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\userViewModel.cs" />
@@ -309,6 +314,9 @@
     <Content Include="Views\Product\Developers.cshtml" />
     <Content Include="Views\Product\ReleaseYear.cshtml" />
     <Content Include="Views\Product\CategoriesResult.cshtml" />
+    <Content Include="Views\Admin\EditUser.cshtml" />
+    <Content Include="Views\Admin\DetailsUser.cshtml" />
+    <Content Include="Views\Product\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -330,6 +338,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806290816187_Init.resx">
       <DependentUpon>201806290816187_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807100738113_ProcessOrder.resx">
+      <DependentUpon>201807100738113_ProcessOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

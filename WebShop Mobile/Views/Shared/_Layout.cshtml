@@ -17,7 +17,7 @@
                      new { @class = "navbar-brand" })
             </div>
             @*<div class="col-xs-5">
-        <div class="row">*@
+                <div class="row">*@
             <div class=" col-xs-5" id="AjaxForm">
                 @using (Ajax.BeginForm(new AjaxOptions
                 {
@@ -31,7 +31,7 @@
                 }
             </div>
             @*</div>
-        </div>*@
+                </div>*@
 
             @*<div class="col-xs-1"></div>*@
             @Html.Partial("_LoginPartial")
@@ -75,12 +75,23 @@
                 <li class="nav-item">
                     @*<a class="nav-link">*@
                     @Ajax.ActionLink("Kontakta oss", "Contact", "Home", null, new AjaxOptions
-               {
-                   UpdateTargetId = "MainBody",
-                   HttpMethod = "get",
-                   InsertionMode = InsertionMode.Replace
-               }, new { @class = "navbar-text" })
+                       {
+                           UpdateTargetId = "MainBody",
+                           HttpMethod = "get",
+                           InsertionMode = InsertionMode.Replace
+                       }, new { @class = "navbar-text" })
                     @*</a>*@
+                </li>
+                <li class="nav-item">
+                    @*<a class="nav-link">*@
+                    @Ajax.ActionLink("Kundvagn", "Cart", "Product", null, new AjaxOptions
+                        {
+                        UpdateTargetId = "MainBody",
+                        HttpMethod = "get",
+                        InsertionMode = InsertionMode.Replace
+                        }, new { @class = "navbar-text" })
+                    @*@Html.ActionLink("Cart", "Cart", "Product", null, null)*@
+
                 </li>
             </ul>
         </div>

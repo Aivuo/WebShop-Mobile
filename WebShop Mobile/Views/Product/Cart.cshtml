@@ -1,0 +1,33 @@
+﻿@model WebShop_Mobile.Models.Order
+
+@{
+    ViewBag.Title = "Cart";
+    float total = 0;
+}
+
+<h2>Cart</h2>
+@if (Model != null)
+{
+    <h4>@Model.OrderDate</h4>
+}else
+	{
+	         <h4>@DateTime.Now.Date</h4>
+	}
+
+<hr />
+
+@if (Model != null)
+{
+    foreach (var item in Model.OrderRows)
+    {
+        <h3>Name: @item.CellPhone.Name</h3>
+        <div>@string.Format("Price: {0}kr", item.Price.ToString("N2"))</div>
+        <hr />
+        total += item.Price;
+    }
+}
+
+
+<hr />
+
+<h3>Total: @string.Format("Price: {0}kr", total.ToString("N2"))</h3>

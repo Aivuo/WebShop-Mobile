@@ -14,11 +14,12 @@
 
     <a href="/Product/Details/@item.Id">
         <div class="col-md-offset-1 col-md-2" id="@item.Name" style="width:100%">
-            <div class="bg-primary" style="font-size:24px">@item.Name</div>
+            <div class="bg-primary " style="font-size:24px">@item.Name</div>
 
             <img class="img-thumbnail img-responsive" src="~/Content/Img/@image" alt="@item.Name" />  @*style="width:400px"*@
 
             <div class="bg-primary">@string.Format("Price: {0}kr", item.Price.ToString("N2"))</div>
+            <div class="btn btn-primary">@Html.ActionLink("Add to Cart", "AddToCart", new {cellId=item.Id}, new {@class = "text-light" })</div>
         </div>
     </a>
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebShop_Mobile.Models.userViewModel>
+﻿@model IEnumerable<WebShop_Mobile.Models.UserViewModel>
 
 @{
     ViewBag.Title = "AllUsers";
@@ -27,10 +27,10 @@
             @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Firstname)
+            Full Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Lastname)
+            Roles
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DeliveryAdress)
@@ -41,6 +41,7 @@
         <th>
             @Html.DisplayNameFor(model => model.DeliveryCity)
         </th>
+        <th></th>
         <th></th>
     </tr>
 
@@ -60,10 +61,10 @@
             @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Firstname)
+            @Html.DisplayFor(modelItem => item.Firstname) @Html.DisplayFor(modelItem => item.Lastname)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Lastname)
+            @Html.DisplayFor(modelItem => item.UserRoles)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DeliveryAdress)
@@ -75,9 +76,14 @@
             @Html.DisplayFor(modelItem => item.DeliveryCity)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+
+            @Html.ActionLink("Edit", "EditUser", new { email = item.Email }) |
+            @Html.ActionLink("Details", "DetailsUser", new { email = item.Email }) |
+            @Html.ActionLink("Delete", "Delete", new { email = item.Email })
+
+        </td>
+        <td>
+            @Html.ActionLink("Add as admin", "AddAdmin", new { email = item.Email });
         </td>
     </tr>
 }
