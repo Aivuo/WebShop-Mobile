@@ -15,6 +15,8 @@ namespace WebShop_Mobile.Models
 
         public List<OrderRow> OrderRows { get; set; }
 
+        public bool Processed { get; set; }
+
         public Order()
         {
             OrderRows = new List<OrderRow>();

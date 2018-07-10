@@ -33,27 +33,95 @@ namespace WebShop_Mobile.Controllers
             var users = AppDb.Users.ToList();
             var customers = Db.Customers.ToList();
 
-            var model = new List<userViewModel>();
+            var model = new List<UserViewModel>();
 
             foreach (var item in users)
             {
                 var customer = customers.FirstOrDefault(x => x.EmailAdress == item.Email);
-                model.Add(new userViewModel(item, customer));
+                model.Add(new UserViewModel(item, customer));
             }
 
             return View(model);
         }
 
-        public ActionResult AddAdmin(string id)
+        public ActionResult DetailsUser(string email)
+        {
+            var user = AppDb.Users.FirstOrDefault(x => x.Email == email);
+            var customer = Db.Customers.FirstOrDefault(x => x.EmailAdress == email);
+
+            var model = new UserViewModel(user, customer);
+
+            return View(model);
+        }
+
+        public ActionResult EditUser(string email)
+        {
+            var user = AppDb.Users.FirstOrDefault(x => x.Email == email);
+            var customer = Db.Customers.FirstOrDefault(x => x.EmailAdress == email);
+
+            var model = new UserViewModel(user, customer);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditUser(UserViewModel userView)
+        {
+            var user = AppDb.Users.FirstOrDefault(x => x.Email == userView.Email);
+            var customer = Db.Customers.FirstOrDefault(x => x.EmailAdress == userView.Email);
+
+            user.Email = userView.Email;
+            customer.EmailAdress = userView.Email;
+
+            user.EmailConfirmed = userView.EmailConfirmed;
+
+            user.PhoneNumber = userView.PhoneNumber;
+            customer.PhoneNumber = userView.PhoneNumber;
+
+            user.PhoneNumberConfirmed = userView.PhoneNumberConfirmed;
+
+            customer.Firstname = userView.Firstname;
+            customer.Lastname = userView.Lastname;
+
+            customer.BillingAdress = userView.BillingAdress;
+            customer.BillingCity = userView.BillingCity;
+            customer.BillingZip = userView.BillingZip;
+
+            customer.DeliveryAdress = userView.DeliveryAdress;
+            customer.DeliveryCity = userView.DeliveryCity;
+            customer.DeliveryZip = userView.DeliveryZip;
+
+            user.LockoutEnabled = userView.LockoutEnabled;
+
+            if (userView.UserRoles != null)
+            {
+                foreach (var item in userView.UserRoles)
+                {
+                    var roleId = AppDb.Roles.FirstOrDefault(x => x.Name == item).Id;
+                    var role = user.Roles.FirstOrDefault(x => x.RoleId == roleId);
+                    user.Roles.Remove(role);
+                }
+            }
+
+            AppDb.SaveChanges();
+            Db.SaveChanges();
+
+            return RedirectToAction("AllUsers");
+        }
+
+        public ActionResult AddAdmin(string email)
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(AppDb));
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(AppDb));
 
-            var model = AppDb.Users.First(x => x.Id == id);
+            var model = AppDb.Users.FirstOrDefault(x => x.Email == email);
 
-            var check = UserManager.AddToRole(model.Id, "Admin");
+            if (model != null)
+            {
+                var check = UserManager.AddToRole(model.Id, "Admin");
 
-            AppDb.SaveChanges();
+                AppDb.SaveChanges();
+            }
 
             return RedirectToAction("AllUsers");
         }
