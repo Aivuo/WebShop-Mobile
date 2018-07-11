@@ -20,6 +20,7 @@
 {
     foreach (var item in Model.OrderRows)
     {
+        <div class="float-md-right">@Html.ActionLink("Remove", "RemoveFromCart", "Product", new{cellId=item.Id, orderId=Model.Id }, null)</div>
         <h3>Name: @item.CellPhone.Name</h3>
         <div>@string.Format("Price: {0}kr", item.Price.ToString("N2"))</div>
         <hr />

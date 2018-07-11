@@ -161,6 +161,21 @@ namespace WebShop_Mobile.Controllers
             return View(model);
         }
 
+        public ActionResult RemoveFromCart(int cellId, int orderId)
+        {
+            var model = Db.Orders.Include("OrderRows").FirstOrDefault(x => x.Id == orderId);
+
+            var cell = model.OrderRows.FirstOrDefault(x => x.Id == cellId);
+
+            model.OrderRows.Remove(cell);
+            Db.OrderRows.Remove(cell);
+
+
+            Db.SaveChanges();
+
+            return RedirectToAction("Cart");
+        }
+
         public ActionResult Order(int orderId)
         {
             var model = Db.Orders.Include("OrderRows")
