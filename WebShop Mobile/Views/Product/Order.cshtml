@@ -1,0 +1,54 @@
+﻿@model WebShop_Mobile.Models.Order
+
+@{
+    ViewBag.Title = "Order";
+    float total = 0;
+}
+
+<h2>Order</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Processed)
+        </th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>
+            @Model.OrderDate
+        </td>
+        <td>
+            @Model.Customer.EmailAdress
+        </td>
+        <td>
+            @Model.Processed
+        </td>
+    </tr>
+
+</table>
+
+@foreach (var item in Model.OrderRows)
+{
+    total += item.Price;
+    <div class="row">
+        <div class="col-md-2">
+            @{var image = item.CellPhone.ProductCode + ".jpg";}
+            <h4>@item.CellPhone.Name</h4>
+            <img src="~/Content/Img/@image" class="img-responsive img-thumbnail"/>
+            <div>@string.Format("Price: {0}kr", item.Price.ToString("N2"))</div>
+        </div>
+    </div>
+    <br />
+}
+
+<h4>Total: @string.Format("Price: {0}kr", total.ToString("N2"))</h4>
