@@ -64,7 +64,7 @@ namespace WebShop_Mobile.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
-            var model = new IndexViewModel
+            var indexViewModel = new IndexViewModel
             {
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
@@ -72,6 +72,17 @@ namespace WebShop_Mobile.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
+
+            ApplicationDbContext AppDb = new ApplicationDbContext();
+            WebShopMobileDb WebDb = new WebShopMobileDb();
+
+            var user = AppDb.Users.FirstOrDefault(x => x.Id == userId);
+            var customer = WebDb.Customers.Include("Orders").FirstOrDefault(x => x.EmailAdress == user.Email);
+
+            var userViewModel = new UserViewModel(user, customer);
+
+            var model = new IndexUserViewModel(indexViewModel, userViewModel);
+
             return View(model);
         }
 
@@ -386,4 +397,5 @@ namespace WebShop_Mobile.Controllers
 
 #endregion
     }
+
 }
