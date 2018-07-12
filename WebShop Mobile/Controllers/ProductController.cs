@@ -19,7 +19,7 @@ namespace WebShop_Mobile.Controllers
         {
             var model = Methods.SearchProducts(ReleaseYear, searchString, Developers);
 
-            if (Request.IsAjaxRequest())
+            if (Request.IsAjaxRequest() || search == 2)
             {
                 if (search != null)
                     return PartialView("_Product", model);
@@ -36,10 +36,15 @@ namespace WebShop_Mobile.Controllers
             var userName = User.Identity.Name;
             Methods.AddtoCart(cellId, userName);
 
+            if (Request.IsAjaxRequest())
+            {
+                return RedirectToAction("Index", new { search = 2 });
+            }
+
             return RedirectToAction("Index");
         }
 
-        public ActionResult Cart()
+        public ActionResult Cart(bool remove = false)
         {
             var user = User.Identity.Name;
             if (user == "")
@@ -60,7 +65,7 @@ namespace WebShop_Mobile.Controllers
                 }
             }
 
-            if (Request.IsAjaxRequest())
+            if (Request.IsAjaxRequest() || remove)
             {
                 return PartialView(order);
             }
@@ -126,7 +131,7 @@ namespace WebShop_Mobile.Controllers
 
             if (Request.IsAjaxRequest())
             {
-                return PartialView("Cart");
+                return RedirectToAction("Cart", new {remove = true});
             }
 
             return RedirectToAction("Cart");

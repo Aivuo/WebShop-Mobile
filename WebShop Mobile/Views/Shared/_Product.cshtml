@@ -12,23 +12,28 @@
     image += ".jpg";
 
 
-    <a href="/Product/Details/@item.Id">
+    <a href="/Product/Details/@item.Id" data-ajax-update="#MainBody" data-ajax-mode="replace" data-ajax="true">
         <div class="col-md-offset-1 col-md-2" id="@item.Name" style="width:100%">
             <div class="bg-primary " style="font-size:24px">@item.Name</div>
 
             <img class="img-thumbnail img-responsive" src="~/Content/Img/@image" alt="@item.Name" />  @*style="width:400px"*@
 
             <div class="bg-primary">@string.Format("Price: {0}kr", item.Price.ToString("N2"))</div>
-            <div class="btn btn-primary">@Html.ActionLink("Add to Cart", "AddToCart", new {cellId=item.Id}, new {@class = "text-light" })</div>
+            <div class="btn btn-primary">
+                @Ajax.ActionLink("Add to Cart", "AddToCart", new {cellId=item.Id},new AjaxOptions() {
+                                    HttpMethod = "post",
+                                    InsertionMode = InsertionMode.Replace,
+                                    UpdateTargetId = "ProductList"}, new {@class = "text-light" })
+            </div>
         </div>
     </a>
 
-    i++;
-    if (i == 4)
-    {
-        <div class="col-md-12"><hr /></div>
-        i = 0;
-    }
+i++;
+if (i == 4)
+{
+    <div class="col-md-12"><hr /></div>
+    i = 0;
+}
 }
 @*<div id="@Model.Id">
          <h2>@Model.Name</h2>
