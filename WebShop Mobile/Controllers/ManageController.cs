@@ -83,6 +83,11 @@ namespace WebShop_Mobile.Controllers
 
             var model = new IndexUserViewModel(indexViewModel, userViewModel);
 
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView(model);
+            }
+
             return View(model);
         }
 

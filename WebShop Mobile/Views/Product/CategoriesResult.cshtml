@@ -14,7 +14,7 @@
     {
         var image = item + ".jpg";
 
-        <a href="/Product/Index?@Category=@item">
+        <a href="/Product/Index?@Category=@item" data-ajax-update="#MainBody" data-ajax-mode="replace" data-ajax="true">
             <div class="col-md-offset-1 col-md-2">
                 <img src="~/Content/Img/@Category/@image" class="img-thumbnail img-responsive" alt="@item" />
                 <div class="bg-primary">@item</div>
