@@ -13,11 +13,20 @@ namespace WebShop_Mobile.Controllers
     {
         public ActionResult Index()
         {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView();
+            }
+
             return View();
         }
 
         public ActionResult About()
         {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView();
+            }
 
             return View();
         }
@@ -25,6 +34,11 @@ namespace WebShop_Mobile.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView();
+            }
 
             return View();
         }

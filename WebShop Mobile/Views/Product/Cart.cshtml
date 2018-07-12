@@ -9,10 +9,11 @@
 @if (Model != null)
 {
     <h4>@Model.OrderDate</h4>
-}else
-	{
-	         <h4>@DateTime.Now.Date</h4>
-	}
+}
+else
+{
+    <h4>@DateTime.Now.Date</h4>
+}
 
 <hr />
 
@@ -20,7 +21,14 @@
 {
     foreach (var item in Model.OrderRows)
     {
-        <div class="float-md-right">@Html.ActionLink("Remove", "RemoveFromCart", "Product", new{cellId=item.Id, orderId=Model.Id }, null)</div>
+        <div class="float-md-right">
+            @Ajax.ActionLink("Remove", "RemoveFromCart", "Product", new {cellId=item.Id, orderId=Model.Id }, new AjaxOptions()
+               {
+                   UpdateTargetId = "MainBody",
+                   HttpMethod = "get",
+                   InsertionMode = InsertionMode.Replace
+               })
+        </div>
         <h3>Name: @item.CellPhone.Name</h3>
         <div>@string.Format("Price: {0}kr", item.Price.ToString("N2"))</div>
         <hr />
@@ -32,3 +40,14 @@
 <hr />
 
 <h3>Total: @string.Format("Price: {0}kr", total.ToString("N2"))</h3>
+
+
+
+@*foreach (var item in Model.OrderRows)
+    {
+        <div class="float-md-right">@Html.ActionLink("Remove", "RemoveFromCart", "Product", new{cellId=item.Id, orderId=Model.Id }, null)</div>
+        <h3>Name: @item.CellPhone.Name</h3>
+        <div>@string.Format("Price: {0}kr", item.Price.ToString("N2"))</div>
+        <hr />
+        total += item.Price;
+    }*@

@@ -15,14 +15,16 @@ namespace WebShop_Mobile.Controllers
         private ApplicationDbContext AppDb = new ApplicationDbContext();
 
         // GET: Product
-        public ActionResult Index(string ReleaseYear, params string[] Developers)
+        public ActionResult Index(string ReleaseYear, int? search, string searchString, params string[] Developers)
         {
-
-            var model = Methods.SearchProducts(ReleaseYear, Developers);
+            var model = Methods.SearchProducts(ReleaseYear, searchString, Developers);
 
             if (Request.IsAjaxRequest())
             {
-                return PartialView("_Product", model);
+                if (search != null)
+                    return PartialView("_Product", model);
+                else
+                    return PartialView(model); 
             }
 
             return View(model);
@@ -31,44 +33,8 @@ namespace WebShop_Mobile.Controllers
         [Authorize]
         public ActionResult AddToCart(int cellId)
         {
-            var user2 = User.Identity.Name;
-            var cellPhone = Db.CellPhones.FirstOrDefault(x => x.Id == cellId);
-            var user = AppDb.Users.FirstOrDefault(x => x.Email == user2);
-            var customer = Db.Customers.Include("Orders")
-                                       .FirstOrDefault(x => x.EmailAdress == user.Email);
-
-            var order = new Order();
-
-            if (customer.Orders == null || customer.Orders.FirstOrDefault(x => x.Processed == false) == null)
-            {
-                order = new Order
-                {
-                    CustomerId = customer.Id,
-                    Customer = customer,
-                    OrderDate = DateTime.Now.ToShortDateString(),
-                    Processed = false
-                };
-                customer.Orders.Add(order);
-            }else
-            {
-                //order = customer.Orders.FirstOrDefault(x => x.Processed == false);
-                order = Db.Orders.Include("OrderRows").FirstOrDefault(x => x.CustomerId == customer.Id && x.Processed == false);
-            }
-
-            var orderRow = new OrderRow
-            {
-                CellPhoneId = cellPhone.Id,
-                CellPhone = cellPhone,
-                Price = cellPhone.Price,
-                Date = order.OrderDate,
-                OrderId = order.Id,
-                Order = order
-            };
-
-            order.OrderRows.Add(orderRow);
-
-            Db.SaveChanges();
-
+            var userName = User.Identity.Name;
+            Methods.AddtoCart(cellId, userName);
 
             return RedirectToAction("Index");
         }
@@ -94,11 +60,20 @@ namespace WebShop_Mobile.Controllers
                 }
             }
 
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView(order);
+            }
+
             return View(order);
         }
 
         public ActionResult Categories()
         {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView();
+            }
 
             return View();
         }
@@ -108,29 +83,12 @@ namespace WebShop_Mobile.Controllers
             if (Category == null)
                 return RedirectToAction("Categories");
 
-            var model = new List<string>();
+            var model = Methods.CategoriesResult(Category);
 
-            if (Category == "Developers")
+            if (Request.IsAjaxRequest())
             {
-                var developers = Db.CellPhones.Select(x => x.Developer)
-                                              .Distinct().ToList();
-                foreach (var item in developers)
-                {
-                    model.Add(item);
-                }
-                model.Sort();
+                return PartialView(model);
             }
-            else
-            {
-                var releaseYears = Db.CellPhones.Select(x => x.ReleaseYear)
-                                                .Distinct().ToList();
-                foreach (var item in releaseYears)
-                {
-                    model.Add(item);
-                }
-                model.Sort();
-            }
-            model.Add(Category);
 
             return View(model);
         }
@@ -142,21 +100,10 @@ namespace WebShop_Mobile.Controllers
 
             var model = Db.CellPhones.First(x => x.Id == id);
 
-            return View(model);
-        }
-
-        public ActionResult Developers()
-        {
-            var model = Db.CellPhones.Select(x => x.Developer)
-                                     .Distinct().ToList();
-
-            return View(model);
-        }
-
-        public ActionResult ReleaseYear()
-        {
-            var model = Db.CellPhones.Select(x => x.ReleaseYear)
-                                     .Distinct().ToList();
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView(model);
+            }
 
             return View(model);
         }
@@ -170,8 +117,17 @@ namespace WebShop_Mobile.Controllers
             model.OrderRows.Remove(cell);
             Db.OrderRows.Remove(cell);
 
+            if (model.OrderRows.Count == 0)
+            {
+                Db.Orders.Remove(model);
+            }
 
             Db.SaveChanges();
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("Cart");
+            }
 
             return RedirectToAction("Cart");
         }
@@ -185,6 +141,11 @@ namespace WebShop_Mobile.Controllers
             foreach (var item in model.OrderRows)
             {
                 item.CellPhone = Db.CellPhones.FirstOrDefault(x => x.Id == item.CellPhoneId);
+            }
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView(model);
             }
 
             return View(model);
