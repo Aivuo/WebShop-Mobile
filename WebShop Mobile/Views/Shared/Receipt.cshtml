@@ -1,0 +1,21 @@
+﻿@model WebShop_Mobile.Models.RecieptViewModel
+
+@{ 
+    float total = 0;
+}
+<?xml version="1.0" encoding="UTF-8"?>
+
+<h4>Kvitto: @Model.OrderDate</h4>
+<div>Namn: @Model.Lastname, @Model.Firstname</div>
+<div>Leverans adress: @Model.DeliveryAdress</div>
+<div>Post adress: @Model.DeliveryCity, @Model.DeliveryZip</div>
+
+<hr />
+
+    @foreach (var item in Model.OrderRows)
+    {
+        <h3>Name: @item.CellPhone.Name</h3>
+        <div>@string.Format("Price: {0}kr", item.Price.ToString("N2"))</div>
+        <br />
+        total += item.Price;
+    }

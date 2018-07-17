@@ -1,0 +1,46 @@
+﻿@model WebShop_Mobile.Models.Order
+@{
+    ViewBag.Title = "Checkout";
+    float total = 0;
+}
+
+<h2>Checkout</h2>
+<hr />
+
+@foreach (var item in Model.OrderRows)
+{
+    var image = item.CellPhone.ProductCode + ".jpg";
+    <div class="row">
+        <img class="img-thumbnail col-md-3 " src="~/Content/Img/@image" />
+        <div class="col-md-9">
+            <h3>Name: @item.CellPhone.Name</h3>
+            <div>@string.Format("Price: {0}kr", item.Price.ToString("N2"))</div>
+            <hr />
+            @{total += item.Price;}
+        </div>
+    </div>
+}
+
+<h4>Betalningsmetod</h4>
+
+@*@using (Ajax.BeginForm(new AjaxOptions()
+    {
+        UpdateTargetId = "MainBody",
+        HttpMethod = "post",
+        InsertionMode = InsertionMode.Replace
+    }))
+    {*@
+@using (Html.BeginForm())
+{
+    <input type = "hidden" name = "total" value = "@total" />
+    <input type = "hidden" name = "orderId" value = "@Model.Id" />
+
+    <label><input type = "radio" name = "payment" value = "PayPal"/>PayPal </label > <br />
+    <label ><input type = "radio" name = "payment" value = "Visa"/>Visa </label > <br />
+    <label ><input type = "radio" name = "payment" value = "MasterCard"/>MasterCard </label > <br />
+
+    <input type = "submit" class="btn btn-primary"/>
+}
+
+@*}*@
+

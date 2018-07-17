@@ -128,5 +128,31 @@ namespace WebShop_Mobile.Models
             Db.SaveChanges();
         }
 
+        public static Order FindCartOrder(string user)
+        {
+            WebShopMobileDb Db = new WebShopMobileDb();
+
+            var customer = Db.Customers.Include("Orders")
+                                       .FirstOrDefault(x => x.EmailAdress == user);
+            var order = Db.Orders.Include("OrderRows")
+                                 .FirstOrDefault(x => x.CustomerId == customer.Id && x.Processed == false);
+
+            if (order != null)
+            {
+                var cellPhones = Db.CellPhones.Where(x => x.Discontinued == false);
+                foreach (var item in order.OrderRows)
+                {
+                    item.CellPhone = cellPhones.First(x => x.Id == item.CellPhoneId);
+                }
+            }
+
+            return order;
+        }
+
+        public static void PaymentMethod(string payment, float total)
+        {
+            //This does nothing
+        }
+
     }
 }

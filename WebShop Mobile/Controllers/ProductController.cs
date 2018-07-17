@@ -49,21 +49,9 @@ namespace WebShop_Mobile.Controllers
             var user = User.Identity.Name;
             if (user == "")
             {
-                return RedirectToAction("Index", "Home", null);
+                return PartialView("_EmptyCart");
             }
-            var customer = Db.Customers.Include("Orders")
-                                       .FirstOrDefault(x => x.EmailAdress == user);
-            var order = Db.Orders.Include("OrderRows")
-                                 .FirstOrDefault(x => x.CustomerId == customer.Id && x.Processed == false);
-
-            if (order != null)
-            {
-                var cellPhones = Db.CellPhones.Where(x => x.Discontinued == false);
-                foreach (var item in order.OrderRows)
-                {
-                    item.CellPhone = cellPhones.First(x => x.Id == item.CellPhoneId);
-                }
-            }
+            var order = Methods.FindCartOrder(user);
 
             if (Request.IsAjaxRequest() || remove)
             {
@@ -81,6 +69,28 @@ namespace WebShop_Mobile.Controllers
             }
 
             return View();
+        }
+
+        public ActionResult Checkout()
+        {
+            var user = User.Identity.Name;
+            var order = Methods.FindCartOrder(user);
+
+            //order.Processed = true;
+            //Db.SaveChanges();
+
+            if (Request.IsAjaxRequest())
+                return PartialView(order);
+
+            return View(order);
+        }
+
+        [HttpPost]
+        public ActionResult CheckOut(float total, int orderId, string payment)
+        {
+            Methods.PaymentMethod(payment, total);
+
+            return RedirectToAction("Receipt", "Pdf", new {orderId, payment, total});
         }
 
         public ActionResult CategoriesResult(string Category)
