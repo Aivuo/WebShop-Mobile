@@ -1,7 +1,7 @@
 ﻿@model WebShop_Mobile.Models.Order
 
 @{
-    ViewBag.Title = "Cart";
+    ViewBag.Title = "Kundvagn";
     float total = 0;
 }
 
@@ -37,9 +37,23 @@ else
 }
 
 
-<hr />
+<div id="checkout">
+    <h3>Total: @string.Format("Price: {0}kr", total.ToString("N2"))</h3>
 
-<h3>Total: @string.Format("Price: {0}kr", total.ToString("N2"))</h3>
+    @if (Model != null && Model.OrderRows.Count > 0)
+    {
+        @*<a href="/Product/Checkout/" class="btn btn-lg btn-primary" data-ajax-update="#MainBody" data-ajax-mode="replace" data-ajax="true">Checkout</a>*@
+        Ajax.BeginForm("Checkout", "Product", null, new AjaxOptions()
+        {
+            HttpMethod = "get",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "MainBody"
+        }); {
+            <input type="submit" class="btn btn-lg btn-primary" name="Checkout" title="Checkout"/>
+        }
+    }
+
+</div>
 
 
 

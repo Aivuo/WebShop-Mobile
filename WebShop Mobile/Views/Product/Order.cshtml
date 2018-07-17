@@ -7,9 +7,6 @@
 
 <h2>Order</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -52,3 +49,5 @@
 }
 
 <h4>Total: @string.Format("Price: {0}kr", total.ToString("N2"))</h4>
+
+@Html.ActionLink("Tillbaka till Order", "Index", "Manage")
