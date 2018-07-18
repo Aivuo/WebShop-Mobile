@@ -13,12 +13,16 @@ namespace WebShop_Mobile.Controllers
     {
         public ActionResult Index()
         {
+            WebShopMobileDb Db = new WebShopMobileDb();
+
+            var model = Db.CellPhones.Where(x => x.News == true && x.Discontinued == false).ToList();
+
             if (Request.IsAjaxRequest())
             {
-                return PartialView();
+                return PartialView(model);
             }
 
-            return View();
+            return View(model);
         }
 
         public ActionResult About()

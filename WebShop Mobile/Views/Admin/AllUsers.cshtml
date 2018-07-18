@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<WebShop_Mobile.Models.UserViewModel>
 
 @{
-    ViewBag.Title = "AllUsers";
+    ViewBag.Title = "Alla Användare";
 }
 
-<h2>AllUsers</h2>
+<h2>Alla användare</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<br />
 <table class="table">
     <tr>
         <th>
@@ -77,15 +75,16 @@
         </td>
         <td>
 
-            @Html.ActionLink("Edit", "EditUser", new { email = item.Email }) |
-            @Html.ActionLink("Details", "DetailsUser", new { email = item.Email }) |
-            @Html.ActionLink("Delete", "Delete", new { email = item.Email })
+            @Html.ActionLink("Ändra", "EditUser", new { email = item.Email }) |
+            @Html.ActionLink("Detaljer", "DetailsUser", new { email = item.Email }) |
+            @Html.ActionLink("Ta bort", "Delete", new { email = item.Email })
 
         </td>
         <td>
-            @Html.ActionLink("Add as admin", "AddAdmin", new { email = item.Email });
+            @Html.ActionLink("Admin rättigheter", "AddAdmin", new { email = item.Email });
         </td>
     </tr>
 }
 
 </table>
+@Html.ActionLink("Tillbaka", "Index", "Admin")

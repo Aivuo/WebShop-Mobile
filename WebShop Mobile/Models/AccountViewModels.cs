@@ -33,7 +33,7 @@ namespace WebShop_Mobile.Models
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Remember this browser?")]
+        [Display(Name = "Kom ihåg den här webbläsaren?")]
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }
@@ -55,10 +55,10 @@ namespace WebShop_Mobile.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lösenord")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Kom ihåg mig?")]
         public bool RememberMe { get; set; }
     }
 
@@ -69,58 +69,58 @@ namespace WebShop_Mobile.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Confirm email")]
-        [Compare("Email", ErrorMessage = "The email and confirmation email do not match.")]
+        [Display(Name = "Bekräfta email")]
+        [Compare("Email", ErrorMessage = "Email matchar inte bekräfta email.")]
         public string ConfirmEmail { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Det {0} måste minst vara {2} bokstäver långt.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lösenord")]
         public string Password { get; set; }
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Bekräfta lösenord")]
+        [Compare("Password", ErrorMessage = "Lösenordet matchar inte beekräfta lösenord.")]
         public string ConfirmPassword { get; set; }
 
         [Required]
         [StringLength(50)]
-        [Display(Name ="Firstname")]
+        [Display(Name ="Förnamn")]
         public string Firstname { get; set; }
         [Required]
         [StringLength(50)]
-        [Display(Name = "Lastname")]
+        [Display(Name = "Efternamn")]
         public string Lastname { get; set; }
 
         [Required]
         [StringLength(100)]
-        [Display(Name = "Billing adress")]
+        [Display(Name = "Faktureringsadress")]
         public string BillingAdress { get; set; }
         [Required]
         [StringLength(25)]
-        [Display(Name = "Billing zip")]
+        [Display(Name = "Fakturerings postnummer")]
         public string BillingZip { get; set; }
         [Required]
         [StringLength(100)]
-        [Display(Name = "Billing city")]
+        [Display(Name = "Fakturerings postort")]
         public string BillingCity { get; set; }
 
         [Required]
         [StringLength(100)]
-        [Display(Name = "Delivery adress")]
+        [Display(Name = "Leveransadress")]
         public string DeliveryAdress { get; set; }
         [Required]
         [StringLength(25)]
-        [Display(Name = "Delivery zip")]
+        [Display(Name = "Postnummer")]
         public string DeliveryZip { get; set; }
         [Required]
         [StringLength(100)]
-        [Display(Name = "Delivery city")]
+        [Display(Name = "Postort")]
         public string DeliveryCity { get; set; }
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "Phonenumber")]
+        [Display(Name = "Telefonnummer")]
         public string PhoneNumber { get; set; }
     }
 
@@ -132,14 +132,14 @@ namespace WebShop_Mobile.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Det {0} måste minst vara {2} bokstäver långt.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lösenord")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Bekräfta lösenord")]
+        [Compare("Password", ErrorMessage = "Lösenordet matchar inte beekräfta lösenord.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

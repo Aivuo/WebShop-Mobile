@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Admin Index";
+}
+
+<h2>Admin sida</h2>
+
+<ol>
+    <li>@Ajax.ActionLink("Alla Produkter", "AllProducts", "Admin", null, new AjaxOptions()
+                             {
+                                 HttpMethod="get",
+                                 InsertionMode = InsertionMode.Replace,
+                                 UpdateTargetId="MainBody"
+                             }, new { @class = "" })</li>
+    <li>@Ajax.ActionLink("Alla Användare", "AllUsers", "Admin", null, new AjaxOptions()
+                             {
+                                 HttpMethod="get",
+                                 InsertionMode = InsertionMode.Replace,
+                                 UpdateTargetId="MainBody"
+                             }, new { @class = "" })</li>
+    <li>@Ajax.ActionLink("Skapa ny produkt", "Create", "Admin", null, new AjaxOptions()
+                             {
+                                 HttpMethod="get",
+                                 InsertionMode = InsertionMode.Replace,
+                                 UpdateTargetId="MainBody"
+                             }, new { @class = "" })</li>
+</ol>

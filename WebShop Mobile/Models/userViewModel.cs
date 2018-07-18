@@ -10,7 +10,7 @@ namespace WebShop_Mobile.Models
     public class UserViewModel
     {
 
-        [Display(Name = "Username")]
+        [Display(Name = "Användarnamn")]
         public string UserName { get; set; }
 
         [Required]
@@ -18,43 +18,43 @@ namespace WebShop_Mobile.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Display(Name = "Email confirmed")]
+        [Display(Name = "Email bekräftad")]
         public bool EmailConfirmed { get; set; }
 
-        [Display(Name = "User roles")]
+        [Display(Name = "Användar roller")]
         public List<string> UserRoles { get; set; }
 
-        [Display(Name = "Phonenumber")]
+        [Display(Name = "Telefonnummer")]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Phonenumber confirmed")]
+        [Display(Name = "Telefonnummer bekräftat")]
         public bool PhoneNumberConfirmed { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Firstname")]
+        [Display(Name = "Förnamn")]
         public string Firstname { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Lastname")]
+        [Display(Name = "Efternamn")]
         public string Lastname { get; set; }
 
-        [Display(Name = "Billing adress")]
+        [Display(Name = "Faktureringsadress")]
         public string BillingAdress { get; set; }
-        [Display(Name = "Billing zip")]
+        [Display(Name = "Fakturerings postnummer")]
         public string BillingZip { get; set; }
-        [Display(Name = "Billing city")]
+        [Display(Name = "Fakturerings postort")]
         public string BillingCity { get; set; }
 
-        [Display(Name = "Delivery adress")]
+        [Display(Name = "Leveransadress")]
         public string DeliveryAdress { get; set; }
-        [Display(Name = "Delivery zip")]
+        [Display(Name = "Postnummer")]
         public string DeliveryZip { get; set; }
-        [Display(Name = "Delivery city")]
+        [Display(Name = "Postort")]
         public string DeliveryCity { get; set; }
 
-        [Display(Name = "Orders")]
+        [Display(Name = "Beställningar")]
         public List<Order> Orders { get; set; }
-        [Display(Name = "Lockout enabled")]
+        [Display(Name = "Lockout aktiverat")]
         public bool LockoutEnabled { get; set; }
 
         public UserViewModel()

@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<WebShop_Mobile.Models.CellPhone>
 
 @{
-    ViewBag.Title = "All Products";
+    ViewBag.Title = "Alla Produkter";
     var i = 0;
 }
 
-<h2>All Products</h2>
-
+<h2>Alla Produkter</h2>
+<br />
 <div class="row">
     @foreach (var item in Model)
     {
@@ -22,6 +22,9 @@
 </div>
 
 <div class="row">
-    @Html.ActionLink("Create new product", "Create")
+    @Html.ActionLink("Skapa ny produkt", "Create", "Admin")
+</div>
+<div class="row">
+    @Html.ActionLink("Tillbaka", "Index", "Admin")
 </div>
 
