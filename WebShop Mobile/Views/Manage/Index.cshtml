@@ -1,25 +1,25 @@
 ﻿@model WebShop_Mobile.Models.IndexUserViewModel
 @{
-    ViewBag.Title = "Manage your account " + Model.userViewModel.Email;
+    ViewBag.Title = "Hantera ditt konto " + Model.userViewModel.Email;
 }
 
 <h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div id="Change_Password">
-    <h4>Change your account settings</h4>
+    <h4>Ändra dina konto inställningar</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>Password:</dt>
+        <dt>Lösenord:</dt>
         <dd>
             [
             @if (Model.indexViewModel.HasPassword)
             {
-                @Html.ActionLink("Change your password", "ChangePassword")
+                @Html.ActionLink("Ändra ditt lösenord", "ChangePassword")
             }
             else
             {
-                @Html.ActionLink("Create", "SetPassword")
+                @Html.ActionLink("Skapa", "SetPassword")
             }
             ]
         </dd>
@@ -27,7 +27,7 @@
 </div>
 <br />
 <div id="Profile">
-    <h4>Profile</h4>
+    <h4>Profil</h4>
     <hr />
     <div class="col-md-offset-1 row">
         <div class="col-md-2">
@@ -116,13 +116,13 @@
 </div>
 <br />
 <div id="Order_History">
-    <h4>Order History</h4>
+    <h4>Beställnings historik</h4>
     <hr />
     <div class="col-md-offset-1">
         @foreach (var item in Model.userViewModel.Orders)
         {
-            <h4>Order: @item.OrderDate Processed: @if (item.Processed){<span>Yes</span>}else{<span>No</span>}</h4>
-            <div>@Html.ActionLink("Open order", "Order", "Product", new {orderId = item.Id }, null)</div>
+            <h4>Beställningsdatum: @item.OrderDate Beställd: @if (item.Processed){<span>Ja</span>}else{<span>Nej</span>}</h4>
+            <div>@Html.ActionLink("Kolla beställning", "Order", "Product", new {orderId = item.Id }, null)</div>
         }
     </div>
 </div>

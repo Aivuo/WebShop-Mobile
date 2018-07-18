@@ -17,6 +17,10 @@ namespace WebShop_Mobile.Controllers
 
         public ActionResult Index()
         {
+
+            if (Request.IsAjaxRequest())
+                return PartialView();
+
             return View();
         }
 
@@ -24,6 +28,9 @@ namespace WebShop_Mobile.Controllers
         {
             var model = Db.CellPhones.OrderBy(x => x.Developer)
                                      .ThenBy(x => x.Name).ToList();
+
+            if (Request.IsAjaxRequest())
+                return PartialView(model);
 
             return View(model);
         }
@@ -41,6 +48,9 @@ namespace WebShop_Mobile.Controllers
                 model.Add(new UserViewModel(item, customer));
             }
 
+            if (Request.IsAjaxRequest())
+                return PartialView(model);
+
             return View(model);
         }
 
@@ -51,6 +61,9 @@ namespace WebShop_Mobile.Controllers
 
             var model = new UserViewModel(user, customer);
 
+            if (Request.IsAjaxRequest())
+                return PartialView(model);
+
             return View(model);
         }
 
@@ -60,6 +73,9 @@ namespace WebShop_Mobile.Controllers
             var customer = Db.Customers.FirstOrDefault(x => x.EmailAdress == email);
 
             var model = new UserViewModel(user, customer);
+
+            if (Request.IsAjaxRequest())
+                return PartialView(model);
 
             return View(model);
         }
@@ -129,6 +145,9 @@ namespace WebShop_Mobile.Controllers
         public ActionResult Create()
         {
 
+            if (Request.IsAjaxRequest())
+                return PartialView();
+
             return View();
         }
 
@@ -148,6 +167,9 @@ namespace WebShop_Mobile.Controllers
                 return RedirectToAction("AllProducts");
 
             var model = Db.CellPhones.First(x => x.Id == id);
+
+            if (Request.IsAjaxRequest())
+                return PartialView(model);
 
             return View(model);
         }

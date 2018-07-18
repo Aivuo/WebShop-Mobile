@@ -1,11 +1,11 @@
 ﻿@model WebShop_Mobile.Models.Order
 
 @{
-    ViewBag.Title = "Order";
+    ViewBag.Title = "Beställning";
     float total = 0;
 }
 
-<h2>Order</h2>
+<h2>Beställning</h2>
 
 <table class="table">
     <tr>
@@ -28,7 +28,14 @@
             @Model.Customer.EmailAdress
         </td>
         <td>
-            @Model.Processed
+            @if (Model.Processed)
+            {
+                <span>Ja</span>
+            }
+            else
+            {
+                <span>Nej</span>
+            }
         </td>
     </tr>
 
@@ -42,12 +49,12 @@
             @{var image = item.CellPhone.ProductCode + ".jpg";}
             <h4>@item.CellPhone.Name</h4>
             <img src="~/Content/Img/@image" class="img-responsive img-thumbnail"/>
-            <div>@string.Format("Price: {0}kr", item.Price.ToString("N2"))</div>
+            <div>@string.Format("Pris: {0}kr", item.Price.ToString("N2"))</div>
         </div>
     </div>
     <br />
 }
 
-<h4>Total: @string.Format("Price: {0}kr", total.ToString("N2"))</h4>
+<h4>@string.Format("Totalsumma: {0}kr", total.ToString("N2"))</h4>
 
 @Html.ActionLink("Tillbaka till Order", "Index", "Manage")

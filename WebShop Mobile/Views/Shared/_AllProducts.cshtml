@@ -7,9 +7,9 @@
             @Model.ProductCode <br />
             @Model.ReleaseYear <br />
         </div>
-        <div style="font-size:12px">@string.Format("Price: {0}kr", Model.Price.ToString("N2"))</div>
+        <div style="font-size:12px">@string.Format("Pris: {0}kr", Model.Price.ToString("N2"))</div>
       
-        @Html.ActionLink("Details", "Details","Product", new {id=Model.Id }, null)
-        @Html.ActionLink("Edit", "Edit", new { id=Model.Id})
+        @Html.ActionLink("Detaljer", "Details","Product", new {id=Model.Id }, null) |
+        @Html.ActionLink("Ändra", "Edit", new { id=Model.Id})
 
     </div>

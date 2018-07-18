@@ -324,8 +324,6 @@
     <Content Include="Views\Admin\AllUsers.cshtml" />
     <Content Include="Views\Product\Categories.cshtml" />
     <Content Include="Views\Shared\_Developers.cshtml" />
-    <Content Include="Views\Product\Developers.cshtml" />
-    <Content Include="Views\Product\ReleaseYear.cshtml" />
     <Content Include="Views\Product\CategoriesResult.cshtml" />
     <Content Include="Views\Admin\EditUser.cshtml" />
     <Content Include="Views\Admin\DetailsUser.cshtml" />
@@ -334,6 +332,7 @@
     <Content Include="Views\Shared\_EmptyCart.cshtml" />
     <Content Include="Views\Product\Checkout.cshtml" />
     <Content Include="Views\Shared\Receipt.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
