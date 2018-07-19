@@ -10,7 +10,7 @@
 
 <h2>@Model.Name</h2>
 
-<div>
+<div class="row">
     <hr />
     <img class="img-responsive" src="~/Content/Img/@image" alt="@Model.Name" width="400"/>
     <dl class="dl-horizontal">
@@ -110,11 +110,17 @@
 
     </dl>
 </div>
+<div class="btn btn-primary row">
+    @Ajax.ActionLink("Lägg i Kundvagnen", "AddToCart", "Product", new {cellId=Model.Id},new AjaxOptions() {
+                    HttpMethod = "post",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "MainBody"}, new {@class = "text-light small" })
+</div>
 <br />
-<p>
+<p class="row">
     @if (User.IsInRole("Admin"))
     {
-        @Html.ActionLink("Edit", "Edit","Admin", new { id = Model.Id }, null) <span> | </span>
+        @Html.ActionLink("Ändra", "Edit","Admin", new { id = Model.Id }, null) <span> | </span>
     }
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Tillbaka till produkter", "Index")
 </p>

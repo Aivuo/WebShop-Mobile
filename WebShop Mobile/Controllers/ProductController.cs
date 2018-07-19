@@ -38,10 +38,10 @@ namespace WebShop_Mobile.Controllers
 
             if (Request.IsAjaxRequest())
             {
-                return RedirectToAction("Index", new { search = 2 });
+                return RedirectToAction("Cart", "Product");
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Cart", "Product");
         }
 
         public ActionResult Cart(bool remove = false)
