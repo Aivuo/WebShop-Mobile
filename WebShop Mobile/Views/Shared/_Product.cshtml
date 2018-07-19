@@ -14,10 +14,10 @@
 
             <div class="bg-primary text-center">@string.Format("Pris: {0}kr", Model.Price.ToString("N2"))</div>
             <div class="btn btn-sm btn-primary btn-block text-center">
-                @Ajax.ActionLink("Lägg i Kundvagnen", "AddToCart", new {cellId=Model.Id},new AjaxOptions() {
+                @Ajax.ActionLink("Lägg i Kundvagnen", "AddToCart", "Product", new {cellId=Model.Id},new AjaxOptions() {
                                     HttpMethod = "post",
                                     InsertionMode = InsertionMode.Replace,
-                                    UpdateTargetId = "ProductList"}, new {@class = "text-light small" })
+                                    UpdateTargetId = "MainBody"}, new {@class = "text-light small" })
             </div>
         </div>
     </a>
